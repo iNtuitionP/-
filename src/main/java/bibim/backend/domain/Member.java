@@ -27,4 +27,8 @@ public class Member {
                 .age(age)
                 .build();
     }
+
+    public void addPost(Post post){
+        Posts.add(post);
+    }
 }
