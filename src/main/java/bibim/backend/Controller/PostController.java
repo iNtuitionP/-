@@ -1,8 +1,6 @@
 package bibim.backend.Controller;
 
-import bibim.backend.domain.dto.CreatePostDto;
-import bibim.backend.domain.dto.ResponsePostCreateDto;
-import bibim.backend.domain.dto.ResponsePostGetDto;
+import bibim.backend.domain.dto.*;
 import bibim.backend.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -26,5 +24,20 @@ public class PostController {
             @PathVariable Long postId
     ){
         return postService.findPost(postId);
+    }
+
+    @PutMapping("/post")
+    public ResponsePostFetchDto fetchPost(
+            @RequestBody FetchPostDto fetchPostDto
+    ){
+        postService.fetchPost(fetchPostDto);
+        return new ResponsePostFetchDto(200, "게시글이 정상적으로 수정됨");
+    }
+
+    @DeleteMapping("/post/{postId}")
+    public ResponsePostDeleteDto deletePost(
+            @PathVariable Long postId
+    ){
+        return postService.deletePost(postId);
     }
 }
