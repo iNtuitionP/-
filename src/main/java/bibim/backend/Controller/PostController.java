@@ -27,11 +27,10 @@ public class PostController {
     }
 
     @PutMapping("/post")
-    public ResponsePostFetchDto fetchPost(
-            @RequestBody FetchPostDto fetchPostDto
+    public ResponsePostPutDto fetchPost(
+            @RequestBody PutPostDto fetchPostDto
     ){
-        postService.fetchPost(fetchPostDto);
-        return new ResponsePostFetchDto(200, "게시글이 정상적으로 수정됨");
+        return postService.putPost(fetchPostDto);
     }
 
     @DeleteMapping("/post/{postId}")

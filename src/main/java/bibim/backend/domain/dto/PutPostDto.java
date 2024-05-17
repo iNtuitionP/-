@@ -1,6 +1,6 @@
 package bibim.backend.domain.dto;
 
-public record FetchPostDto(
+public record PutPostDto(
         Long id,
         String title,
         String content

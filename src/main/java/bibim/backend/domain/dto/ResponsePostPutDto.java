@@ -1,6 +1,6 @@
 package bibim.backend.domain.dto;
 
-public record ResponsePostFetchDto(
+public record ResponsePostPutDto(
         int status,
         String message
 ) {

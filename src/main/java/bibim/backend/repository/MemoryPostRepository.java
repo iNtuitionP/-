@@ -20,16 +20,26 @@ public class MemoryPostRepository implements  PostRepository{
 
     @Override
     public Post findById(Long id) {
+        // we don't have the post they want to find
+        if(!store.containsKey(id)){
+            return null;
+        }
+        // otherwise, there is the post in the DB
         return store.get(id);
     }
 
     @Override
-    public void fetch(Post post) {
+    public void put(Post post) {
         store.put(post.getId(), post);
     }
 
     @Override
     public Post deleteById(Long postId) {
+        // we don't have the post they want to delete
+        if(!store.containsKey(postId)){
+            return null;
+        }
+        // otherwise, we can delete the post
         Post post = store.get(postId);
         store.remove(postId);
         return post;
